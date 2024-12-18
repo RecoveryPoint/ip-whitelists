@@ -17,7 +17,3 @@ FINAL_OUT=$PROJ_PATH/zscaler.txt
 /usr/bin/cat $CENR_JSON_OUTPUT | jq -r '."zscaler.net" | to_entries | map(.value) | map(to_entries) | flatten | map(.value) | flatten | map(.range) | join("\n")' > $CENR_OUT
 /usr/bin/cat $FUTURE_JSON_OUTPUT | /usr/bin/jq -r '.prefixes | unique | join("\n")' > $FUTURE_OUT
 /usr/bin/cat $REQ_OUT $CENR_OUT $FUTURE_OUT > $FINAL_OUT
-cd $PROJ_PATH
-/usr/bin/git add .
-/usr/bin/git commit -m "Refresh whitelist"
-/usr/bin/git push
